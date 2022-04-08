@@ -36,11 +36,10 @@ function postData (data){
         </div>
       `;
         total += adding;
-        total += settingPopup(adding, element);
+        // total += settingPopup(adding, element);
 
       return total;
     },[]);
-    const popElements = settingPopup(data);
     employees.innerHTML = posted;
     
 }
