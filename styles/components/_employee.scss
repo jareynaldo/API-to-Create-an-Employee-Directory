@@ -1,0 +1,16 @@
+// ======================================
+//  Button Styles
+// ======================================
+
+  .employee{
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 3px $color-text;
+    img{
+        width: 90px;
+        height: 90px;
+    }
+    .employee-text {
+        font-size: smaller;
+    }
+  }

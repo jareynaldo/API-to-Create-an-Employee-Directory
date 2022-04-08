@@ -8,10 +8,11 @@
          'base/typography';
 
 // Component Styles
-@import 'components/buttons',
+@import 'components/employee',
         'components/grid',
         'components/images',
-        'components/nav';
+        'components/title',
+        'components/modal';
 
 // sass input.scss:output.css
 //sass --watch input.scss:output.css

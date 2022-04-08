@@ -1,3 +1,17 @@
 // ======================================
 //  grid Styles
 // ======================================
+
+#employees {
+    max-width: 90%;
+    gap: 20px;
+    display: grid;
+    margin-left: 5%;
+    margin-right: 5%;
+    @media (min-width: map-get($breakpoints, 'med')) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: map-get($breakpoints, 'lg')) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

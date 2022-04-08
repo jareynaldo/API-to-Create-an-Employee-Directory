@@ -1,5 +1,8 @@
 // ======================================
-//  Button Styles
+//  title Styles
 // ======================================
 
-  
+h1 {
+    color: lighten($color-text, 10);
+    margin-left: 1rem;
+}
