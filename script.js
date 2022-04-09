@@ -3,13 +3,13 @@
  //fetch call
 
 function fetchData(url) {
-    return fetch(url)
+     fetch(url)
              .then(checkStatus)  
              .then(res => res.json())
              .then(url => filterThrough(url))
              .then(data => postData(data))
-             .catch(error => console.log('Looks like there was a problem!', error))    
-             //.finally(settingListeners()) 
+             .catch(error => console.log('Looks like there was a problem!', error));   
+    setTheTime();
 }
 
 // helper functions 
@@ -47,6 +47,7 @@ function postData (data){
         </div>
         </div>
         <div id="myModal" class="modal">
+        <div id="myclass">
             <img src='${image(element)}' alt="one of our loveley employess">
             <div class="m">
                 <h3>${fullName(element)}</h3>
@@ -60,51 +61,60 @@ function postData (data){
                 <p>Birthday: ${birthday(element)}</p>
             </div>
         </div>
+        </div>
         `;
         return total;
     },[]);  
 
     employees.innerHTML = posted;    
 }
-
-// function popupFunc(set) {
-//     console.log(set);
-//     let popText = `
-//     <div id="myModal" class="modal">
-//     <img src='${image(set)}' alt="one of our loveley employess">
-//     <div class="m">
-//         <h3>${fullName(set)}</h3>
-//         <p>${email(set)}</p>
-//         <p>${city(set)}</p>
-//     </div>
-//     <div class="s">
-//     <span class="close">&times;</span>
-//     <p>${phone(set)}</p>
-//     <p>${adress(set)}</p>
-//     <p>Birthday: ${birthday(set)}</p>
-//     </div>
-//     </div>
-//     `; 
-// }
+/*
+function popupFunc(set) {
+    console.log(set);
+    let popText = `
+    <div id="myModal" class="modal">
+    <img src='${image(set)}' alt="one of our loveley employess">
+    <div class="m">
+        <h3>${fullName(set)}</h3>
+        <p>${email(set)}</p>
+        <p>${city(set)}</p>
+    </div>
+    <div class="s">
+    <span class="close">&times;</span>
+    <p>${phone(set)}</p>
+    <p>${adress(set)}</p>
+    <p>Birthday: ${birthday(set)}</p>
+    </div>
+    </div>
+    `; 
+}
+*/
 
 // calling function
 let users = fetchData('https://randomuser.me/api/?results=12');
 
-
-
 //event listeners
 
+function setTheTime(){
+    setTimeout(atLast, 150);
+}   
+function atLast(){
+    const employee = document.getElementsByClassName('employee');
+    const button = document.getElementsByClassName(`close`);
+    [...employee].forEach(emplo => {
+        emplo.addEventListener('click', () =>{
+            emplo.nextElementSibling.style.display ="block";
+            
+        });
+    });
+    [...button].forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.parentElement.parentElement.parentElement.style.display = "none";
+        })
+        console.log(btn.parentElement.parentElement.parentElement);
+    } );
+}
 
-function popfunc(){
-     console.log('works');
-    }
-
-const employee = document.getElementsByClassName('employee');
-const popuos = document.getElementsByClassName('modal');
-
-[...employee].forEach(emplo => {
-    emplo.addEventListener('click', popfunc());
-})
 
 
 
