@@ -1,6 +1,8 @@
  let employeeDiv = document.getElementById(`employees`);
+ const searchBar = document.getElementById('searchBar');
 
  //fetch call
+
 
 function fetchData(url) {
      fetch(url)
@@ -30,18 +32,27 @@ function image (data){ return data.picture.large;}
 function fullName (data){ return data.name.first + ' ' + data.name.last;}
 function email (data){ return data.email;}
 function city (data){return data.location.city;}
-function phone (data){return data.cell;}
-function adress (data){return data.location.street + ' ' + data.location.name + ', ' + data.location.state + ' ' + data.location.postalcode;}
-function birthday (data){ return data.dob.date.indexOf(10)}
+function phone (data){
+    let first3 = data.cell.slice(0,3);
+    let lastOnes = data.cell.slice(5,14); 
+    return `(` + first3 + ')' + lastOnes;
+}
+
+function adress (data){return data.location.street.number + ' ' + data.location.street.name + ', ' + data.location.state + ' ' + data.location.postcode;}
+function birthday (data){ return data.dob.date.slice(2,10)}
+function actualBday(birthday){
+     let bday = birthday.split("").reverse();
+     return bday.join("");
+}
 
 // submit data to html 
 function postData (data){
     let posted = data.reduce((total, element)  => {
          total += `
         <div class="employee">
-        <img src='${image(element)}' alt="one of our loveley employess">
+        <img src='${image(element)}'data-caption="${fullName(element)}" alt="one of our loveley employess">
         <div class="employee-text">
-        <h3>${fullName(element)}</h3>
+        <h3 class="name" >${fullName(element)}</h3>
         <p>${email(element)}</p>
         <p>${city(element)}</p>
         </div>
@@ -58,7 +69,7 @@ function postData (data){
                 <span class="close">&times;</span>
                 <p>${phone(element)}</p>
                 <p>${adress(element)}</p>
-                <p>Birthday: ${birthday(element)}</p>
+                <p>Birthday: ${actualBday(birthday(element))}</p>
             </div>
         </div>
         </div>
@@ -68,27 +79,7 @@ function postData (data){
 
     employees.innerHTML = posted;    
 }
-/*
-function popupFunc(set) {
-    console.log(set);
-    let popText = `
-    <div id="myModal" class="modal">
-    <img src='${image(set)}' alt="one of our loveley employess">
-    <div class="m">
-        <h3>${fullName(set)}</h3>
-        <p>${email(set)}</p>
-        <p>${city(set)}</p>
-    </div>
-    <div class="s">
-    <span class="close">&times;</span>
-    <p>${phone(set)}</p>
-    <p>${adress(set)}</p>
-    <p>Birthday: ${birthday(set)}</p>
-    </div>
-    </div>
-    `; 
-}
-*/
+
 
 // calling function
 let users = fetchData('https://randomuser.me/api/?results=12');
@@ -101,29 +92,30 @@ function setTheTime(){
 function atLast(){
     const employee = document.getElementsByClassName('employee');
     const button = document.getElementsByClassName(`close`);
+    const name = document.getElementsByClassName(`name`);
     [...employee].forEach(emplo => {
         emplo.addEventListener('click', () =>{
             emplo.nextElementSibling.style.display ="block";
-            
         });
     });
     [...button].forEach(btn => {
         btn.addEventListener('click', () => {
             btn.parentElement.parentElement.parentElement.style.display = "none";
         })
-        console.log(btn.parentElement.parentElement.parentElement);
     } );
+    searchBar.addEventListener(`keyup`, (e) =>{
+        const searchString = e.target.value.toLowerCase();
+        [...name].filter(emplo =>{
+           if (emplo.outerText.toLowerCase().includes(searchString)){
+           } else{
+              emplo.parentElement.parentElement.style.display ="none";
+           }
+        //    if(searchString ="") {
+        //         emplo.parentElement.parentElement.style.display ="block";
+        //    }
+        });
+        
+    } );
+  
+
 }
-
-
-
-
-
-
-
-// function settingPopup (data, element) {
-//     console.log(element);
-//     element.addEventListener( `click`, popupFunc(data));
-// };
-
-

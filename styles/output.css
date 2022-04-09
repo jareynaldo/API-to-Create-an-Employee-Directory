@@ -1,3 +1,16 @@
+.searchWrapper {
+  width: 80%;
+  margin-right: 9%;
+  margin-left: 9%;
+  padding: 1rem;
+}
+.searchWrapper input {
+  margin-left: 20px;
+  width: 100%;
+  height: 4rem;
+  font-size: xx-large;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -383,6 +396,8 @@ h1 {
 }
 
 .modal {
+  text-align: center;
+  display: flex;
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -391,6 +406,7 @@ h1 {
   /* Sit on top */
   padding: 25%;
   /* Location of the box */
+  padding-top: 10%;
   left: 0;
   top: 0;
   width: 50%;
@@ -422,10 +438,9 @@ h1 {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  flex-grow: 2;
 }
-
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

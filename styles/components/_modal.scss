@@ -1,8 +1,11 @@
 .modal {
+    text-align: center;
+    display: flex;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding: 25%; /* Location of the box */
+    padding-top: 10%;
     left: 0;
     top: 0;
     width: 50%; /* Full width */
@@ -29,11 +32,11 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+    flex-grow: 2;
+    &:hover,
+    &:focus{
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
   }
