@@ -74,6 +74,7 @@ function postData (data){
                     <p>${email(element)}</p>
                     <p>${city(element)}</p>
                 </div>
+                <div class="border"></div>
                 <div class="s">
                     <p>${phone(element)}</p>
                     <p>${adress(element)}</p>
@@ -125,7 +126,6 @@ function previous (elements){
                 .style.display = "none";
                 
             let lastElement = element.parentElement.parentElement;
-            console.log(lastElement);
             lastElement.previousElementSibling.previousElementSibling.style.display ="block";
         });
     });

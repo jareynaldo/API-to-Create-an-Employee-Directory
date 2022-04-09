@@ -5,7 +5,6 @@
   padding: 1rem;
 }
 .searchWrapper input {
-  margin-left: 20px;
   width: 100%;
   height: 4rem;
   font-size: xx-large;
@@ -424,11 +423,31 @@ h1 {
 }
 
 #myclass {
-  background-color: #ffa9a9;
+  background-color: #8af1fa;
   border-radius: 10px;
 }
 
 /* Modal Content */
+.m h3 {
+  font-size: xx-large;
+  margin-bottom: 0;
+}
+.m p {
+  color: #888;
+  margin: 5px;
+}
+
+.s {
+  color: #888;
+}
+
+.border {
+  height: 2px;
+  background-color: #4a4a4a;
+  width: 80%;
+  margin: 3% 10%;
+}
+
 .modal-content {
   background-color: #ffffff;
   margin: auto;

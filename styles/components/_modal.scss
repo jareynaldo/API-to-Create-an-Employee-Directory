@@ -18,12 +18,32 @@
     }
   }
   #myclass {
-      background-color: rgb(255, 169, 169);
+      background-color: rgb(138, 241, 250);
       border-radius: 10px;
   }
   
   /* Modal Content */
-
+  .m{
+    h3{
+      font-size: xx-large;
+      margin-bottom: 0;
+    }
+    p {
+      color: #888;
+      margin: 5px;
+    }
+  }
+  .s{
+    color: #888;
+  }
+.border {
+    height: 2px;
+    background-color: rgb(74, 74, 74);
+    width: 80%;
+    // margin-left: 10%;
+    // margin-right: 10%;
+    margin: 3% 10%;
+  }
 
   .modal-content {
     background-color: #ffffff;
