@@ -58,20 +58,22 @@ function postData (data){
         </div>
         </div>
         <div id="myModal" class="modal">
-        <div id="myclass">
-            <img src='${image(element)}' alt="one of our loveley employess">
-            <div class="m">
-                <h3>${fullName(element)}</h3>
-                <p>${email(element)}</p>
-                <p>${city(element)}</p>
+            <div id="myclass">
+            <div class="back">&#x2190</div>
+                <img src='${image(element)}' alt="one of our loveley employess">
+                <div class="m">
+                    <h3>${fullName(element)}</h3>
+                    <p>${email(element)}</p>
+                    <p>${city(element)}</p>
+                </div>
+                <div class="s">
+                    <span class="close">&times;</span>
+                    <p>${phone(element)}</p>
+                    <p>${adress(element)}</p>
+                    <p>Birthday: ${actualBday(birthday(element))}</p>
+                </div>
+                <div class="next">&#x2192;</div>
             </div>
-            <div class="s">
-                <span class="close">&times;</span>
-                <p>${phone(element)}</p>
-                <p>${adress(element)}</p>
-                <p>Birthday: ${actualBday(birthday(element))}</p>
-            </div>
-        </div>
         </div>
         `;
         return total;
@@ -89,10 +91,32 @@ let users = fetchData('https://randomuser.me/api/?results=12');
 function setTheTime(){
     setTimeout(atLast, 150);
 }   
+
+function toggle (elements){
+    [...elements].forEach(element => {
+        element.addEventListener("click", () =>{
+            element
+                .parentElement
+                .parentElement
+                .style.display = "none";
+
+            element
+                .parentElement
+                .parentElement
+                .nextElementSibling
+                .nextElementSibling
+                .style.display ="block";
+        });
+    });
+}
+
 function atLast(){
     const employee = document.getElementsByClassName('employee');
     const button = document.getElementsByClassName(`close`);
     const name = document.getElementsByClassName(`name`);
+    const next = document.getElementsByClassName(`next`);
+    const back = document.getElementsByClassName(`back`);
+    // listeners to open and close elements
     [...employee].forEach(emplo => {
         emplo.addEventListener('click', () =>{
             emplo.nextElementSibling.style.display ="block";
@@ -103,19 +127,23 @@ function atLast(){
             btn.parentElement.parentElement.parentElement.style.display = "none";
         })
     } );
+    // listeners for the search function
     searchBar.addEventListener(`keyup`, (e) =>{
-        const searchString = e.target.value.toLowerCase();
+        let searchString = e.target.value.toLowerCase();
         [...name].filter(emplo =>{
-           if (emplo.outerText.toLowerCase().includes(searchString)){
-           } else{
-              emplo.parentElement.parentElement.style.display ="none";
+           if (!emplo.outerText.toLowerCase().includes(searchString)){
+               emplo.parentElement.parentElement.style.display ="none";
            }
-        //    if(searchString ="") {
-        //         emplo.parentElement.parentElement.style.display ="block";
-        //    }
-        });
-        
+           else{
+                emplo.parentElement.parentElement.style.display ="none";
+           }
+           if (searchString.length === 0) {
+                let checkStatus = emplo.parentElement.parentElement;
+                checkStatus.style.display ="flex";
+            }
+           });
     } );
-  
-
+  // listener to toggle back and forth
+    toggle(back);
+    toggle(next);
 }

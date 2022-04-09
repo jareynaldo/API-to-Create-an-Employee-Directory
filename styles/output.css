@@ -418,6 +418,10 @@ h1 {
   background-color: rgba(0, 0, 0, 0.652);
   /* Black w/ opacity */
 }
+.modal .back,
+.modal .next {
+  font-size: xx-large;
+}
 
 #myclass {
   background-color: antiquewhite;
