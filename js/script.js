@@ -1,6 +1,11 @@
  let employeeDiv = document.getElementById(`employees`);
  const searchBar = document.getElementById('searchBar');
 
+
+
+ function lastSibling(node) {
+    return node === node.parentNode.querySelector(node.nodeName + ':last-of-type');
+}
  //fetch call
 
 
@@ -26,6 +31,7 @@ if (response.ok) {
 function filterThrough(url){
      return url.results;
 }
+
 // submit abreviation;
 
 function image (data){ return data.picture.large;}
@@ -40,9 +46,11 @@ function phone (data){
 
 function adress (data){return data.location.street.number + ' ' + data.location.street.name + ', ' + data.location.state + ' ' + data.location.postcode;}
 function birthday (data){ return data.dob.date.slice(2,10)}
-function actualBday(birthday){
-     let bday = birthday.split("").reverse();
-     return bday.join("");
+
+function reverseDate (date){
+    let splitDate = date.split("-").reverse();
+    console.log(splitDate.join("-"));
+    return splitDate.join("-");
 }
 
 // submit data to html 
@@ -70,7 +78,7 @@ function postData (data){
                     <span class="close">&times;</span>
                     <p>${phone(element)}</p>
                     <p>${adress(element)}</p>
-                    <p>Birthday: ${actualBday(birthday(element))}</p>
+                    <p>Birthday: ${reverseDate(birthday(element))}</p>
                 </div>
                 <div class="next">&#x2192;</div>
             </div>
@@ -92,7 +100,7 @@ function setTheTime(){
     setTimeout(atLast, 150);
 }   
 
-function toggle (elements){
+function nextElement (elements){
     [...elements].forEach(element => {
         element.addEventListener("click", () =>{
             element
@@ -106,6 +114,20 @@ function toggle (elements){
                 .nextElementSibling
                 .nextElementSibling
                 .style.display ="block";
+        });
+    });
+}
+function previous (elements){
+    [...elements].forEach(element => {
+        element.addEventListener("click", () =>{
+            element
+                .parentElement
+                .parentElement
+                .style.display = "none";
+                
+            let lastElement = element.parentElement.parentElement;
+            console.log(lastElement);
+            lastElement.previousElementSibling.previousElementSibling.style.display ="block";
         });
     });
 }
@@ -130,20 +152,18 @@ function atLast(){
     // listeners for the search function
     searchBar.addEventListener(`keyup`, (e) =>{
         let searchString = e.target.value.toLowerCase();
-        [...name].filter(emplo =>{
+        [...name].filter(emplo =>{ 
            if (!emplo.outerText.toLowerCase().includes(searchString)){
-               emplo.parentElement.parentElement.style.display ="none";
-           }
-           else{
-                emplo.parentElement.parentElement.style.display ="none";
+            emplo.parentElement.parentElement.style.display ="none";
            }
            if (searchString.length === 0) {
                 let checkStatus = emplo.parentElement.parentElement;
                 checkStatus.style.display ="flex";
             }
            });
-    } );
+    });
   // listener to toggle back and forth
-    toggle(back);
-    toggle(next);
+  
+    previous(back);
+    nextElement(next);
 }
