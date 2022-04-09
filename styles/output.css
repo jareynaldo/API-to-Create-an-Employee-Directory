@@ -389,25 +389,27 @@ h1 {
   /* Stay in place */
   z-index: 1;
   /* Sit on top */
-  padding-top: 100px;
+  padding: 25%;
   /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%;
+  width: 50%;
   /* Full width */
   height: 100%;
   /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.652);
   /* Black w/ opacity */
+}
+
+#myclass {
+  background-color: antiquewhite;
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #ffffff;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
