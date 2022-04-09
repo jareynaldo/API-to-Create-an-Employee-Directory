@@ -49,7 +49,6 @@ function birthday (data){ return data.dob.date.slice(2,10)}
 
 function reverseDate (date){
     let splitDate = date.split("-").reverse();
-    console.log(splitDate.join("-"));
     return splitDate.join("-");
 }
 
@@ -68,14 +67,14 @@ function postData (data){
         <div id="myModal" class="modal">
             <div id="myclass">
             <div class="back">&#x2190</div>
-                <img src='${image(element)}' alt="one of our loveley employess">
+            <span class="close">&times;</span>
+                <img class="popupImg" src='${image(element)}' alt="one of our loveley employess">
                 <div class="m">
                     <h3>${fullName(element)}</h3>
                     <p>${email(element)}</p>
                     <p>${city(element)}</p>
                 </div>
                 <div class="s">
-                    <span class="close">&times;</span>
                     <p>${phone(element)}</p>
                     <p>${adress(element)}</p>
                     <p>Birthday: ${reverseDate(birthday(element))}</p>
@@ -97,7 +96,7 @@ let users = fetchData('https://randomuser.me/api/?results=12');
 //event listeners
 
 function setTheTime(){
-    setTimeout(atLast, 150);
+    setTimeout(atLast, 250);
 }   
 
 function nextElement (elements){
@@ -146,7 +145,7 @@ function atLast(){
     });
     [...button].forEach(btn => {
         btn.addEventListener('click', () => {
-            btn.parentElement.parentElement.parentElement.style.display = "none";
+            btn.parentElement.parentElement.style.display = "none";
         })
     } );
     // listeners for the search function

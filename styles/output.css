@@ -424,7 +424,8 @@ h1 {
 }
 
 #myclass {
-  background-color: antiquewhite;
+  background-color: #ffa9a9;
+  border-radius: 10px;
 }
 
 /* Modal Content */
@@ -438,13 +439,28 @@ h1 {
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color: #0687ff;
   float: right;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
   flex-grow: 2;
+  margin-right: 2rem;
 }
-.close:hover, .close:focus {
+.close .close:hover,
+.close .close:focus {
+  color: #c53d3d;
+  cursor: pointer;
+}
+
+.popupImg {
+  margin: 0;
+  text-align: center;
+  margin-left: 2rem;
+}
+
+.back:hover, .back:focus,
+.next:hover,
+.next:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;

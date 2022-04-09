@@ -18,7 +18,8 @@
     }
   }
   #myclass {
-      background-color: antiquewhite;
+      background-color: rgb(255, 169, 169);
+      border-radius: 10px;
   }
   
   /* Modal Content */
@@ -34,11 +35,25 @@
   
   /* The Close Button */
   .close {
-    color: #aaaaaa;
+    color: #0687ff;
     float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
     flex-grow: 2;
+    margin-right: 2rem;
+    .close:hover,
+    .close:focus{
+        color: rgb(197, 61, 61);
+        cursor: pointer;
+      }
+  }
+  .popupImg{
+    margin: 0;
+    text-align: center;
+    margin-left: 2rem;
+  }
+  .back,
+  .next{
     &:hover,
     &:focus{
         color: #000;
@@ -46,3 +61,4 @@
         cursor: pointer;
       }
   }
+  
