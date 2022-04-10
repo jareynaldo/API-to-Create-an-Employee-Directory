@@ -15,6 +15,7 @@ function fetchData(url) {
              .then(res => res.json())
              .then(url => url.results)
              .then(data => postData(data))
+             .then(atLast)
              .catch(error => console.log('Looks like there was a problem!', error));
 }
 
@@ -74,11 +75,12 @@ function postData (data){
 
 
 // calling function
- fetchData('https://randomuser.me/api/?results=12');
+
 
 //event listeners
 
-$( document ).ready( function () {
+
+function atLast(){
     const employee = document.querySelectorAll('.employee');
     const button = document.getElementsByClassName(`close`);
     const name = document.getElementsByClassName(`name`);
@@ -141,4 +143,7 @@ $( document ).ready( function () {
             lastElement.previousElementSibling.previousElementSibling.style.display ="block";
         });
     });
+}
+$( document ).ready( function () {
+    fetchData('https://randomuser.me/api/?results=12');
 });
