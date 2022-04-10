@@ -109,12 +109,12 @@ function atLast(){
            });
     });
     //to delete the first and last toggle switches 
-
-    next[11].previousElementSibling.style.padding = "1rem";
-    next[11].style.display = "none";
-    back[0].nextElementSibling.nextElementSibling.style.padding = "1rem";
-    back[0].style.display = "none";
-
+    if(next.length != 0 & back.length != 0){
+        next[next.length - 1].previousElementSibling.style.padding = "1rem";
+        next[next.length - 1].style.display = "none";
+        back[0].nextElementSibling.nextElementSibling.style.padding = "1rem";
+        back[0].style.display = "none";
+    }
   // listener to toggle back and forth
     [...next].forEach(nexty => {
         nexty.addEventListener("click", () =>{
