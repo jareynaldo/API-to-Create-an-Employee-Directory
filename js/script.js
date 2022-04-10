@@ -20,12 +20,11 @@ function fetchData(url) {
 
 // helper functions 
 function checkStatus(response) {
-if (response.ok) {
-    return Promise.resolve(response);
-} else {
-    return Promise.reject(new Error(response.statusText));
-}
-
+    if (response.ok) {
+        return Promise.resolve(response);
+    } else {
+        return Promise.reject(new Error(response.statusText));
+    }
 }
 
 // submit abreviation;
@@ -79,7 +78,7 @@ function postData (data){
 
 //event listeners
 
-window.onload = function atLast(){
+$( document ).ready( function () {
     const employee = document.querySelectorAll('.employee');
     const button = document.getElementsByClassName(`close`);
     const name = document.getElementsByClassName(`name`);
@@ -142,4 +141,4 @@ window.onload = function atLast(){
             lastElement.previousElementSibling.previousElementSibling.style.display ="block";
         });
     });
-}
+});
