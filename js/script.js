@@ -74,8 +74,6 @@ function postData (data){
 }
 
 
-// calling function
-
 
 //event listeners
 
@@ -87,16 +85,11 @@ function atLast(){
     const next = document.getElementsByClassName(`next`);
     const back = document.getElementsByClassName(`back`);
     // listeners to open and close elements
-    console.log(employee);
     for( let i = 0; i < employee.length; i++){
         employee[i].addEventListener('click', () =>{
-            console.log('clicked');
             employee[i].nextElementSibling.style.display ="block";
         });
     }
-    // employee.forEach(emplo => {
-        
-    // });
     [...button].forEach(btn => {
         btn.addEventListener('click', () => {
             btn.parentElement.parentElement.style.display = "none";
@@ -105,9 +98,9 @@ function atLast(){
     // listeners for the search function
     searchBar.addEventListener(`keyup`, (e) =>{
         let searchString = e.target.value.toLowerCase();
-        [...name].filter(emplo =>{ 
+            [...name].filter(emplo =>{ 
            if (!emplo.outerText.toLowerCase().includes(searchString)){
-            emplo.parentElement.parentElement.style.display ="none";
+                emplo.parentElement.parentElement.style.display ="none";
            }
            if (searchString.length === 0) {
                 let checkStatus = emplo.parentElement.parentElement;
@@ -115,6 +108,13 @@ function atLast(){
             }
            });
     });
+    //to delete the first and last toggle switches 
+
+    next[11].previousElementSibling.style.padding = "1rem";
+    next[11].style.display = "none";
+    back[0].nextElementSibling.nextElementSibling.style.padding = "1rem";
+    back[0].style.display = "none";
+
   // listener to toggle back and forth
     [...next].forEach(nexty => {
         nexty.addEventListener("click", () =>{
@@ -131,7 +131,6 @@ function atLast(){
                 .style.display ="block";
         });
     });
-
     [...back].forEach(backy => {
         backy.addEventListener("click", () =>{
             backy
@@ -144,6 +143,8 @@ function atLast(){
         });
     });
 }
+
+// calling function
 $( document ).ready( function () {
     fetchData('https://randomuser.me/api/?results=12');
 });
