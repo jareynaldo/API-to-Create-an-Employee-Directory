@@ -1,5 +1,5 @@
  let employeeDiv = document.getElementById(`employees`);
- const searchBar = document.getElementById('searchBar');
+ let searchBar = document.getElementById('searchBar');
 
 
 
@@ -96,20 +96,21 @@ function atLast(){
         })
     } );
     // listeners for the search function
-    searchBar.addEventListener(`keyup`, (e) =>{
-        let searchString = e.target.value.toLowerCase();
-            [...name].filter(emplo =>{ 
-           if (!emplo.outerText.toLowerCase().includes(searchString)){
+    searchBar.addEventListener('keyup', () => {
+        let input = searchBar.value.toLowerCase();
+        console.log(input);
+        // let searchString = e.target.value.toLowerCase();
+        [...name].filter(emplo =>{ 
+            if (!emplo.outerHTML.toLowerCase().includes(input)){
                 emplo.parentElement.parentElement.style.display ="none";
-           }
-           if (searchString.length === 0) {
-                let checkStatus = emplo.parentElement.parentElement;
-                checkStatus.style.display ="flex";
+            } else {
+                emplo.parentElement.parentElement.style.display ="flex";
             }
-           });
+        });   
     });
+ 
     //to delete the first and last toggle switches 
-    if(next.length != 0 & back.length != 0){
+    if(next.length != 0 && back.length != 0){
         next[next.length - 1].previousElementSibling.style.padding = "1rem";
         next[next.length - 1].style.display = "none";
         back[0].nextElementSibling.nextElementSibling.style.padding = "1rem";
